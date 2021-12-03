@@ -34,3 +34,7 @@ const newArrayWithBetterKeys = entrepreneurs.map(entrepreneur => {
     return {first_name: entrepreneur.first, last_name: entrepreneur.last, age: ((new Date().getFullYear()) - entrepreneur.year)}
 })
 console.log(newArrayWithBetterKeys)
+
+// Filtre dans cette liste les entrepreneurs qui sont nés dans les années 70 uniquement
+const seventiesEntrepreneurs = entrepreneurs.filter(entrepreneur => (entrepreneur.year >= 1970  && entrepreneur.year < 1980))
+console.log(seventiesEntrepreneurs)
