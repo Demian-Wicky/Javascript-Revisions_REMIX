@@ -1,4 +1,13 @@
+h1{
+    text-align:center;
+}
+
+body {
+    background-color: #F1F9F2;
+}
+
 #error {
+    padding: 14px;
     color: red;
 }
 
@@ -13,13 +22,21 @@ input {
 }
 
 div {
-    padding: 10px;
+    padding: 3px;
 }
 
 #form {
     padding-top: 20px;
     border-radius: 5px;
-    background-color: #f2f2f2;
+    background-color: #DCEEE6;
     padding: 4px;
+    margin-bottom: 30px;
+}
+
+#success {
+    padding: 14px;
+    background-color: #478F8A;
+    color: #F2FAF3;
+    font-size: larger;
 }
 
