@@ -6227,7 +6227,7 @@ console.log("Parmi les utilisateurs ayant rapporté de l'argent, quel est le chi
 
 function averageRevenueByMoneyMaker(){
     const nbMoneyMakers = users.filter(user => user.revenue > 0).length
-    const revenueMap = users.map(user => user.revenue)
+    const revenueMap = users.map(user => user.revenue)  
     const revenueSum = revenueMap.reduce((total, revenue) => total + revenue, 0)
     return revenueSum / nbMoneyMakers
 }
@@ -6336,7 +6336,7 @@ console.log(compareMaleAndFemaleRevenue())
 console.log("Sors-moi les utilisateurs ayant rapporté au moins 75€")
 
 function seventyfivers(){
-return users.filter(user => user.revenue >= 75)
+    return users.filter(user => user.revenue >= 75)
 }
 console.log(seventyfivers())
 
@@ -6345,7 +6345,7 @@ console.log(seventyfivers())
 console.log("Parmi nos 100 premiers utilisateurs, quel est le pourcentage qui sont des clients payants ?")
 
 function profitablePercent100(){
-let moneyMakersNumber = users.slice(0, 100).filter(user => user.revenue > 0).length
-return (moneyMakersNumber + "%")
+    let moneyMakersNumber = users.slice(0, 100).filter(user => user.revenue > 0).length
+    return (moneyMakersNumber + "%")
 }
 console.log(profitablePercent100())
