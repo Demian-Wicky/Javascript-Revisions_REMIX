@@ -6200,7 +6200,10 @@ const users = [
     { id: 6199, email: "eric@marvin.org", firstName: "Lemuel", lastName: "Roché", sex: "M", revenue: 8500, country: "France" }
 ]
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
 // Quel est le chiffre d'affaires moyen par utilisateur ?
+console.log("Quel est le chiffre d'affaires moyen par utilisateur ?")
+
 function averageRevenue(){
     const nbUsers = users.length;
     const revenueMap = users.map(user => user.revenue)
@@ -6208,3 +6211,141 @@ function averageRevenue(){
     return revenueSum / nbUsers
 }
 console.log(averageRevenue())
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Quel est le pourcentage d'utilisateurs ayant rapporté de l'argent (revenue supérieur à 0) ?
+console.log("Quel est le pourcentage d'utilisateurs ayant rapporté de l'argent ?")
+
+function moneyMakerUsersPercentage(){
+    const nbMoneyMakers = users.filter(user => user.revenue > 0).length
+    return (nbMoneyMakers * 100 ) / users.length
+}
+console.log(moneyMakerUsersPercentage())
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Parmi les utilisateurs ayant rapporté de l'argent, quel est le chiffre d'affaires moyen d'un utilisateur ?
+console.log("Parmi les utilisateurs ayant rapporté de l'argent, quel est le chiffre d'affaires moyen d'un utilisateur ?")
+
+function averageRevenueByMoneyMaker(){
+    const nbMoneyMakers = users.filter(user => user.revenue > 0).length
+    const revenueMap = users.map(user => user.revenue)
+    const revenueSum = revenueMap.reduce((total, revenue) => total + revenue, 0)
+    return revenueSum / nbMoneyMakers
+}
+console.log(averageRevenueByMoneyMaker())
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Combien avons-nous gagné d'argent au total ?
+console.log("Combien avons-nous gagné d'argent au total ?")
+
+function totalRevenue(){
+    const revenueMap = users.map(user => user.revenue)
+    return revenueSum = revenueMap.reduce((total, revenue) => total + revenue, 0)
+}
+console.log(totalRevenue())
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Combien avons-nous d'utilisateurs en France ?
+console.log("Combien avons-nous d'utilisateurs en France ?")
+
+function frenchUsersCounter(){
+    const filterFrenchUsers = users.filter(user => user.country === 'France')
+    return filterFrenchUsers.length
+}
+console.log(frenchUsersCounter())
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Parmi ces utilisateurs, combien avons-nous de clients payants en France ?
+console.log("Parmi ces utilisateurs, combien avons-nous de clients payants en France ?")
+
+function frenchMoenyMakersCounter(){
+    return users.filter(user => user.country === 'France' && user.revenue > 0).length
+}
+console.log(frenchMoenyMakersCounter())
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Donne-moi le chiffre d'affaires réparti dans nos 4 pays les plus représentés (Allemagne, États-Unis, France, Grande-Bretagne) (chiffre d'affaires total, en France, aux États-Unis, etc.)
+console.log("Donne-moi le chiffre d'affaires réparti dans nos 4 pays les plus représentés (Allemagne, États-Unis, France, Grande-Bretagne).")
+
+function revenueRepartition(nb){
+    // returns all countries in an array
+    function allCountries(){
+        let usersCountries = users.map(user => user.country)
+        return usersCountries.filter((value, index) => usersCountries.indexOf(value) === index) // removes duplicates
+    }
+    // returns revenue for a given country
+    function RevenueFromCountry(country){
+        let countryRevenue = users
+            .filter(user => user.country === country)
+            .map(user => user.revenue)
+            .reduce((total, revenue) => total + revenue, 0)
+        return countryRevenue
+    }
+    // output
+    return allCountries()
+        .map( country => ({country: country, revenue: RevenueFromCountry(country)}) )
+        .sort((a,b) => (a.revenue <  b.revenue ? 1 : -1))
+        .slice(0, nb)
+}
+console.log(revenueRepartition(4))  
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Fais-moi la liste de tous les pays dans lesquels nous avons gagné de l'argent ?
+console.log("Fais-moi la liste de tous les pays dans lesquels nous avons gagné de l'argent ?")
+
+function moneyMakerCountries(){
+    let moneyMakerUsers = users.filter(user => user.revenue > 0)
+    let moneyMakerCountries = moneyMakerUsers.map((user => user.country))
+    return moneyMakerCountries.filter((value, index) => moneyMakerCountries.indexOf(value) === index).sort() // removes duplicates and sorts by name
+}
+console.log(moneyMakerCountries())
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Quels sont les 5 utilisateurs qui nous ont rapporté le plus d'agent ?
+console.log("Quels sont les 5 utilisateurs qui nous ont rapporté le plus d'agent ?")
+
+function fiver(nb){
+let usersCopy = [...users]
+return usersCopy.sort((a,b) => (a.revenue < b.revenue ? 1 : -1)).slice(0, nb)
+}
+console.log(fiver(5))
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Gagnons-nous plus d'argent auprès des hommes, ou des femmes ?
+
+function compareMaleAndFemaleRevenue(){
+	let femaleUsers = users.filter(user => user.sex === "F")
+	let femaleRevenue = femaleUsers.map(female => female.revenue).reduce((total, revenue) => total + revenue, 0)
+
+	let maleUsers = users.filter(user => user.sex === "M")
+	let maleRevenue = maleUsers.map(male => male.revenue).reduce((total, revenue) => total + revenue, 0)
+
+	if (femaleRevenue > maleRevenue){
+		return "les Femmes rapportent plus que les hommes"
+	}
+	else if (femaleRevenue == maleRevenue){
+		return "les hommes et les femmes rapportent la même chose"
+	}
+	else if (femaleRevenue < maleRevenue){
+		return "les hommes rapportent plus que les femmes"
+	}
+}
+console.log(compareMaleAndFemaleRevenue())     
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Sors-moi les utilisateurs ayant rapporté au moins 75€
+console.log("Sors-moi les utilisateurs ayant rapporté au moins 75€")
+
+function seventyfivers(){
+return users.filter(user => user.revenue >= 75)
+}
+console.log(seventyfivers())
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Parmi nos 100 premiers utilisateurs, quel est le pourcentage qui sont des clients payants ?
+console.log("Parmi nos 100 premiers utilisateurs, quel est le pourcentage qui sont des clients payants ?")
+
+function profitablePercent100(){
+let moneyMakersNumber = users.slice(0, 100).filter(user => user.revenue > 0).length
+return (moneyMakersNumber + "%")
+}
+console.log(profitablePercent100())
