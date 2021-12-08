@@ -4,60 +4,62 @@
 <head>
     <meta charset="utf-8">
     <title>Jeu du LOTO</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
 </head>
 
 <body>
     <h1>Jeu du LOTO</h1>
 
-    <form action="javascript:alert('Hello there, I am being submitted');" method="post">
+    <div id="error"></div>
+
+    <form id="form" action="" method="GET">
         <div>
             <label for="firstname">Prénom :</label>
-            <input type="text" id="firstname" name="user_firstname">
+            <input type="text" id="firstname" name="user_firstname" value="Demian">
         </div>
         <div>
             <label for="lastname">Nom :</label>
-            <input type="text" id="lastname" name="user_lastname">
+            <input type="text" id="lastname" name="user_lastname"  value="Wicky">
         </div>
         <div>
             <label for="mail">e-mail :</label>
-            <input type="email" id="mail" name="user_mail">
+            <input type="text" id="email" name="user_email"  value="demian.wicky@gmail.lol">
         </div>
 
         <div>
             <label for="nb1">nb1 :</label>
-            <input type="nb1" id="nb1" name="user_nb1">
+            <input type="nb1" id="nb1" name="user_nb1"  value="1">
         </div>
         <div>
             <label for="nb2">nb2 :</label>
-            <input type="nb2" id="nb2" name="user_nb2">
+            <input type="nb2" id="nb2" name="user_nb2"  value="2">
         </div>
         <div>
             <label for="nb3">nb3 :</label>
-            <input type="nb3" id="nb3" name="user_nb3">
+            <input type="nb3" id="nb3" name="user_nb3"  value="3">
         </div>
         <div>
             <label for="nb4">nb4 :</label>
-            <input type="nb4" id="nb4" name="user_nb4">
+            <input type="nb4" id="nb4" name="user_nb4"  value="4">
         </div>
         <div>
             <label for="nb5">nb5 :</label>
-            <input type="nb5" id="nb5" name="user_nb5">
+            <input type="nb5" id="nb5" name="user_nb5"  value="5">
         </div>
         <div>
             <label for="nb6">nb6 :</label>
-            <input type="nb6" id="nb6" name="user_nb6">
+            <input type="nb6" id="nb6" name="user_nb6"  value="6">
         </div>
-
 
         <div class="button">
             <button type="submit">Envoyer le formulaire</button>
         </div>
     </form>
 
+    <div id="success"></div>
+
 </body>
-
-
-<script src="script.js"></script>
 
 
 </html>
