@@ -73,7 +73,8 @@ form.addEventListener('submit', (e) => {
     if (email.value.length < 8 || email.value.length > 30) {
         messages.push("Votre email n'est pas valide")
     }
-
+    // TODO: email doit contenir un @ et, ensuite, un point
+    // TODO: email doit contenir 2 ou 3 lettres après le point
 
     if (messages.length > 0) {
         e.preventDefault()
